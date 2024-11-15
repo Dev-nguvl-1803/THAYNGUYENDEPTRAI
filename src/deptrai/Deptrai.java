@@ -15,6 +15,8 @@ public class Deptrai {
      */
     public static void main(String[] args) {
         System.out.println("Nah i'd win");
+        System.out.println("Để lưu trữ ở đây để không quên: nhớ khai báo");
+        
         
     }
     
