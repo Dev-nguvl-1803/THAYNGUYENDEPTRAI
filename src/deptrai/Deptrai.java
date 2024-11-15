@@ -16,6 +16,7 @@ public class Deptrai {
     public static void main(String[] args) {
         System.out.println("Nah i'd win");
         System.out.println("Để đây để còn ghi nhớ: khai báo thuộc tính");
+        System.out.println("Có bốn thuộc tính đó là: Mã, tên, tuổi và địa chỉ");
     }
     
 }
