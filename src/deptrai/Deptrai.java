@@ -16,6 +16,8 @@ public class Deptrai {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Hello");
+        System.out.println("Nah i'd win");
     }
     
 }
+
