@@ -17,6 +17,7 @@ public class Deptrai {
         // TODO code application logic here
         System.out.println("Hello");
         System.out.println("Nah i'd win");
+        System.out.println("DM Thanh ko mac sip");
     }
     
 }
