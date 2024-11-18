@@ -4,10 +4,22 @@
  */
 package service;
 
+import java.util.ArrayList;
+import model.GiaoVien;
+
 /**
  *
  * @author ADMIN
  */
 public class QuanLyGiaoVien {
+    ArrayList<GiaoVien> list = new ArrayList<>();
+
+    public QuanLyGiaoVien() {
+        list.add(new GiaoVien("", Integer.SIZE, "", ""));
+        list.add(new GiaoVien("", Integer.SIZE, "", ""));
+        list.add(new GiaoVien("", Integer.SIZE, "", ""));
+        list.add(new GiaoVien("", Integer.SIZE, "", ""));
+        list.add(new GiaoVien("", Integer.SIZE, "", ""));
+    }
     
 }
