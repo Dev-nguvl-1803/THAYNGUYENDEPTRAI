@@ -12,7 +12,6 @@ import model.GiaoVien;
  * @author ADMIN
  */
 public class QuanLyGiaoVien {
-
     ArrayList<GiaoVien> list = new ArrayList<>();
 
     public QuanLyGiaoVien() {
@@ -22,5 +21,4 @@ public class QuanLyGiaoVien {
         list.add(new GiaoVien("John Nexon", 25, "SD1802", "Nam"));
         list.add(new GiaoVien("Bob Impact", 25, "SD1809", "Nam"));
     }
-
 }
