@@ -18,6 +18,7 @@ public class QuanLyGiaoVien {
         list.add(new GiaoVien("Cao Phan Minh Hanh Tuk", 59, "SD1804", "Khong Biet"));
         list.add(new GiaoVien("Nguyen Tien Thanh", 35, "SD1803", "Nu"));
         list.add(new GiaoVien("Nguyen Tuan Tai", 20, "SD1801", "Nam"));
+        list.add(new GiaoVien("Tran Minh Quan", 25, "SD1832", "Ngo"));
         list.add(new GiaoVien("John Nexon", 25, "SD1802", "Nam"));
         list.add(new GiaoVien("Bob Impact", 25, "SD1809", "Nam"));
     }
