@@ -55,7 +55,7 @@ public class GiaoVien {
 
     @Override
     public String toString() {
-        return ten + "," + tuoi + "," + lop + "," + gioitinh;
+        return ten + ", " + tuoi + ", " + lop + ", " + gioitinh;
     }
     
 }
