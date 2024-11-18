@@ -23,7 +23,6 @@ public class Deptrai {
         System.out.println("sigma");
         System.out.println("Hello");
         System.out.println("Nah i'd win");
-        System.out.println("DM Thanh ko mac sip");
     }
     
 }

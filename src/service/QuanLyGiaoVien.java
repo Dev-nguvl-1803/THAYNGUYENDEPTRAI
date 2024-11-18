@@ -23,4 +23,8 @@ public class QuanLyGiaoVien {
         list.add(new GiaoVien("Tran Minh Quan", 25, "SD1832", "Ngo"));
     }
 
+    public ArrayList<GiaoVien> getList() {
+        return list;
+    }
+
 }
