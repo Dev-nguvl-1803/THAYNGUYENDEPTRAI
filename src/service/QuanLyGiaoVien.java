@@ -22,4 +22,8 @@ public class QuanLyGiaoVien {
         list.add(new GiaoVien("", Integer.SIZE, "", ""));
     }
     
+    public String them(GiaoVien giaoVien){
+        list.add(giaoVien);
+        return "Them thanh cong";
+    }
 }
