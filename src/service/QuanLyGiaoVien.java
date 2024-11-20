@@ -23,4 +23,8 @@ public class QuanLyGiaoVien {
         list.add(new GiaoVien("Tran Minh Quan", 25, "SD1832", "Ngo"));
     }
 
+    public String sua(int index, GiaoVien giaoVien) {
+        list.set(index, giaoVien);
+        return "Sua thanh cong";
+    }
 }
