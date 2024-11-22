@@ -15,15 +15,20 @@ public class QuanLyGiaoVien {
     ArrayList<GiaoVien> list = new ArrayList<>();
 
     public QuanLyGiaoVien() {
-        list.add(new GiaoVien("", Integer.SIZE, "", ""));
-        list.add(new GiaoVien("", Integer.SIZE, "", ""));
-        list.add(new GiaoVien("", Integer.SIZE, "", ""));
-        list.add(new GiaoVien("", Integer.SIZE, "", ""));
-        list.add(new GiaoVien("", Integer.SIZE, "", ""));
+        list.add(new GiaoVien("Cao Phan Minh Hanh Tuk", 59, "SD1804", "Khong Biet"));
+        list.add(new GiaoVien("Nguyen Tien Thanh", 35, "SD1803", "Nữ"));
+        list.add(new GiaoVien("Nguyen Tuan Tai", 20, "SD1801", "Nam"));
+        list.add(new GiaoVien("Tran Hai Nam", 25, "SD1842", "Osu"));
+        list.add(new GiaoVien("Vu Thanh Hai Phong", 25, "SD1812", "Pong"));
+        list.add(new GiaoVien("Tran Minh Quan", 25, "SD1832", "Ngo"));
     }
-    
+
     public String them(GiaoVien giaoVien){
         list.add(giaoVien);
         return "Them thanh cong";
+    }
+  
+    public ArrayList<GiaoVien> getList() {
+        return list;
     }
 }
