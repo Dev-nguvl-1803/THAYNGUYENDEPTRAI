@@ -27,8 +27,17 @@ public class QuanLyGiaoVien {
         list.remove(row);
         return "Xoa thanh it";
     }
+
+    public String sua(int index, GiaoVien giaoVien) {
+        list.set(index, giaoVien);
+        return "Sua thanh cong";
+      
+    public String them(GiaoVien giaoVien){
+        list.add(giaoVien);
+        return "Them thanh cong";
+    }
+  
     public ArrayList<GiaoVien> getList() {
         return list;
     }
-
 }
