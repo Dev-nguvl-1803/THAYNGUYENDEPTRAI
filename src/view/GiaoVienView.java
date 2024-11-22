@@ -4,6 +4,8 @@
  */
 package view;
 
+import service.QuanLyGiaoVien;
+
 /**
  *
  * @author ADMIN
@@ -13,6 +15,7 @@ public class GiaoVienView extends javax.swing.JFrame {
     /**
      * Creates new form GiaoVienView
      */
+    QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
     public GiaoVienView() {
         initComponents();
     }
