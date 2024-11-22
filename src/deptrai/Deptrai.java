@@ -25,6 +25,10 @@ public class Deptrai {
 
         System.out.println("Hello");
         System.out.println("Nah i'd win");
+        
+        
+        
+        System.out.println("update 2");
     }
     
 }
