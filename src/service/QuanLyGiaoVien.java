@@ -23,8 +23,12 @@ public class QuanLyGiaoVien {
         list.add(new GiaoVien("Tran Minh Quan", 25, "SD1832", "Ngo"));
     }
 
+    public String them(GiaoVien giaoVien){
+        list.add(giaoVien);
+        return "Them thanh cong";
+    }
+  
     public ArrayList<GiaoVien> getList() {
         return list;
     }
-
 }
