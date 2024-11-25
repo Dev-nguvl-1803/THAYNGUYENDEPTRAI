@@ -21,6 +21,7 @@ public class QuanLyGiaoVien {
         list.add(new GiaoVien("Tran Hai Nam", 25, "SD1842", "Osu"));
         list.add(new GiaoVien("Vu Thanh Hai Phong", 25, "SD1812", "Pong"));
         list.add(new GiaoVien("Tran Minh Quan", 25, "SD1832", "Ngo"));
+        list.add(new GiaoVien("XD", 25, "SD183122", "Ngu"));
     }
 
     public String xoa(int row){
