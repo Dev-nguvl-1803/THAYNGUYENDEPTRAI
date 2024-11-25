@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.util.ArrayList;
+import model.GiaoVien;
 import service.QuanLyGiaoVien;
 
 /**
@@ -18,6 +20,12 @@ public class GiaoVienView extends javax.swing.JFrame {
     QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
     public GiaoVienView() {
         initComponents();
+    }
+    
+    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
+    
+    void loadData(ArrayList<GiaoVien> list){
+        
     }
 
     /**
