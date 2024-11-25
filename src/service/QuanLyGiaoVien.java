@@ -23,6 +23,10 @@ public class QuanLyGiaoVien {
         list.add(new GiaoVien("Tran Minh Quan", 25, "SD1832", "Ngo"));
     }
 
+    public String LoadData(){
+        return list;
+    }
+
     public xoa(int row){
         list.remove(row);
         return "Xoa thanh it";
