@@ -19,6 +19,27 @@ public class GiaoVienView extends javax.swing.JFrame {
      * Creates new form GiaoVienView
      */
     QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
+
+    public GiaoVienView() {
+        initComponents();
+        loadData(quanLyGiaoVien.getList());
+    }
+
+    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
+
+    void loadData(ArrayList<GiaoVien> list) {
+        DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
+        tableModel.setRowCount(0);
+        for (GiaoVien giaoVien : list) {
+            tableModel.addRow(new Object[]{
+                giaoVien.getTen(),
+                giaoVien.getTuoi(),
+                giaoVien.getLop(),
+                giaoVien.getGioitinh(),});
+        }
+    }
+
+    QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
     public GiaoVienView() {
         initComponents();
         loadData(quanLyGiaoVien.getList());
@@ -38,6 +59,31 @@ public class GiaoVienView extends javax.swing.JFrame {
             });
         }
     }
+
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {                                    
+        // TODO add your handling code here:
+        if (txtTen.getText().isEmpty() || txtTuoi.getText().isEmpty() || txtLop.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong De Trong");
+        }
+        try {
+            String Ten = txtTen.getText();
+            String Tuoi = txtTuoi.getText();
+            String Lop = txtLop.getText();
+            String GT;
+            if (RBtnNam.isSelected()) {
+                GT = "Nam";
+            } else {
+                GT = "Nu";
+            }
+            GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
+            String KQ = quanLyGiaoVien.add(GV);
+            JOptionPane.showMessageDialog(this, KQ);
+            LoadSVTable(quanLyGiaoVien.getList());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
+        }
+    } 
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -75,8 +121,10 @@ public class GiaoVienView extends javax.swing.JFrame {
 
         jLabel4.setText("Gioi tinh");
 
+        buttonGroup1.add(rdonam);
         rdonam.setText("Nam");
 
+        buttonGroup1.add(rdonu);
         rdonu.setText("Nữ");
 
         tblgiaovien.setModel(new javax.swing.table.DefaultTableModel(
@@ -90,6 +138,11 @@ public class GiaoVienView extends javax.swing.JFrame {
                 "Ten", "Tuoi", "Lop", "Gioi tinh"
             }
         ));
+        tblgiaovien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblgiaovienMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblgiaovien);
 
         jButton1.setText("Thêm");
@@ -118,13 +171,12 @@ public class GiaoVienView extends javax.swing.JFrame {
                                 .addGap(62, 62, 62)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtlop, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(rdonam)
-                                            .addGap(99, 99, 99)
-                                            .addComponent(rdonu))
-                                        .addComponent(txtten, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                                        .addComponent(txttuoi))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(rdonam)
+                                        .addGap(99, 99, 99)
+                                        .addComponent(rdonu))
+                                    .addComponent(txtten, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                                    .addComponent(txttuoi)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -169,6 +221,20 @@ public class GiaoVienView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiaovienMouseClicked
+        // TODO add your handling code here:
+        int row = tblgiaovien.getSelectedRow();
+        GiaoVien gv = qlgv.getList().get(row);
+        txtten.setText(gv.getTen());
+        txttuoi.setText(gv.getTuoi().toString());
+        txtlop.setText(gv.getLop());
+        if ("Nam".equals(gv.getGioitinh())) {
+            rdonam.setSelected(true);
+        } else {
+            rdonu.setSelected(true);
+        }
+    }//GEN-LAST:event_tblgiaovienMouseClicked
 
     /**
      * @param args the command line arguments
