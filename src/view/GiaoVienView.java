@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import model.GiaoVien;
 import service.QuanLyGiaoVien;
 
 /**
@@ -18,6 +21,22 @@ public class GiaoVienView extends javax.swing.JFrame {
     QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
     public GiaoVienView() {
         initComponents();
+        loadData(quanLyGiaoVien.getList());
+    }
+    
+    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
+    
+    void loadData(ArrayList<GiaoVien> list){
+        DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
+        tableModel.setRowCount(0);
+        for (GiaoVien giaoVien : list) {
+            tableModel.addRow(new Object[]{
+                giaoVien.getTen(),
+                giaoVien.getTuoi(),
+                giaoVien.getLop(),
+                giaoVien.getGioitinh(),
+            });
+        }
     }
 
     /**
