@@ -46,4 +46,14 @@ public class QuanLyGiaoVien {
     public ArrayList<GiaoVien> getList() {
         return list;
     }
+
+    public ArrayList<GiaoVien> search(ArrayList<GiaoVien> list, String ten) {
+        ArrayList<GiaoVien> searchNow = new ArrayList();
+        for (GiaoVien gv : list) {
+            if(gv.getTen().equals(ten)) {
+                searchNow.add(gv);
+            }
+        }
+        return searchNow;
+    }
 }
