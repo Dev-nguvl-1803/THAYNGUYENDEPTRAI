@@ -39,6 +39,52 @@ public class GiaoVienView extends javax.swing.JFrame {
         }
     }
 
+    QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
+    public GiaoVienView() {
+        initComponents();
+        loadData(quanLyGiaoVien.getList());
+    }
+    
+    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
+    
+    void loadData(ArrayList<GiaoVien> list){
+        DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
+        tableModel.setRowCount(0);
+        for (GiaoVien giaoVien : list) {
+            tableModel.addRow(new Object[]{
+                giaoVien.getTen(),
+                giaoVien.getTuoi(),
+                giaoVien.getLop(),
+                giaoVien.getGioitinh(),
+            });
+        }
+    }
+
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {                                    
+        // TODO add your handling code here:
+        if (txtTen.getText().isEmpty() || txtTuoi.getText().isEmpty() || txtLop.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong De Trong");
+        }
+        try {
+            String Ten = txtTen.getText();
+            String Tuoi = txtTuoi.getText();
+            String Lop = txtLop.getText();
+            String GT;
+            if (RBtnNam.isSelected()) {
+                GT = "Nam";
+            } else {
+                GT = "Nu";
+            }
+            GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
+            String KQ = quanLyGiaoVien.add(GV);
+            JOptionPane.showMessageDialog(this, KQ);
+            LoadSVTable(quanLyGiaoVien.getList());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
+        }
+    } 
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
