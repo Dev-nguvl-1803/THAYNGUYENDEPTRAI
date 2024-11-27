@@ -21,21 +21,23 @@ public class QuanLyGiaoVien {
         list.add(new GiaoVien("Tran Hai Nam", 25, "SD1842", "Osu"));
         list.add(new GiaoVien("Vu Thanh Hai Phong", 25, "SD1812", "Pong"));
         list.add(new GiaoVien("Tran Minh Quan", 25, "SD1832", "Ngo"));
+        list.add(new GiaoVien("XD", 25, "SD183122", "Ngu"));
+        list.add(new GiaoVien("XD1", 25, "SD1831232", "Ngu1321"));
     }
 
     public String LoadData(){
         return list;
     }
-
-    public xoa(int row){
+  
+    public String xoa(int row){
         list.remove(row);
         return "Xoa thanh it";
     }
-
     public String sua(int index, GiaoVien giaoVien) {
         list.set(index, giaoVien);
         return "Sua thanh cong";
-      
+    }
+
     public String them(GiaoVien giaoVien){
         list.add(giaoVien);
         return "Them thanh cong";
