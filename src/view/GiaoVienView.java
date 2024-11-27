@@ -90,6 +90,11 @@ public class GiaoVienView extends javax.swing.JFrame {
                 "Ten", "Tuoi", "Lop", "Gioi tinh"
             }
         ));
+        tblgiaovien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblgiaovienMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblgiaovien);
 
         jButton1.setText("Thêm");
@@ -178,6 +183,20 @@ public class GiaoVienView extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiaovienMouseClicked
+        // TODO add your handling code here:
+        int row = tblgiaovien.getSelectedRow();
+        GiaoVien giaoVien = quanLyGiaoVien.getList().get(row);
+        txtten.setText(giaoVien.getTen());
+        txttuoi.setText(String.valueOf(giaoVien.getTuoi()).toString());
+        txtlop.setText(giaoVien.getLop());
+        if(giaoVien.getGioitinh().equals("Nam")){
+            rdonam.setSelected(true);
+        }else{
+            rdonu.setSelected(true);
+        }
+    }//GEN-LAST:event_tblgiaovienMouseClicked
 
     /**
      * @param args the command line arguments
