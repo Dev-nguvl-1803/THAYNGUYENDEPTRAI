@@ -22,43 +22,19 @@ public class GiaoVienView extends javax.swing.JFrame {
 
     public GiaoVienView() {
         initComponents();
-        loadData(quanLyGiaoVien.getList());
+        load(qlgv.getList());
     }
 
-    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
-
-    void loadData(ArrayList<GiaoVien> list) {
+    void load(ArrayList<GiaoVien> listGV) {
         DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
         tableModel.setRowCount(0);
-        for (GiaoVien giaoVien : list) {
+        for (GiaoVien gv : listGV) {
             tableModel.addRow(new Object[]{
-                giaoVien.getTen(),
-                giaoVien.getTuoi(),
-                giaoVien.getLop(),
-                giaoVien.getGioitinh(),});
-        }
-    }
-
-    QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
-    public GiaoVienView() {
-        initComponents();
-        loadData(quanLyGiaoVien.getList());
-    }
-    
-    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
-    
-    void loadData(ArrayList<GiaoVien> list){
-        DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
-        tableModel.setRowCount(0);
-        for (GiaoVien giaoVien : list) {
-            tableModel.addRow(new Object[]{
-                giaoVien.getTen(),
-                giaoVien.getTuoi(),
-                giaoVien.getLop(),
-                giaoVien.getGioitinh(),
+                gv.getTen(),
+                gv.getTuoi(),
+                gv.getLop(),
+                gv.getGioitinh()
             });
-        }
-    }
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {                                    
         // TODO add your handling code here:
