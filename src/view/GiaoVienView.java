@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import model.GiaoVien;
 import service.QuanLyGiaoVien;
 
 /**
@@ -16,8 +19,24 @@ public class GiaoVienView extends javax.swing.JFrame {
      * Creates new form GiaoVienView
      */
     QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
+
     public GiaoVienView() {
         initComponents();
+
+    }
+
+    void load(ArrayList<GiaoVien> listGV) {
+        DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
+        tableModel.setRowCount(0);
+        for (GiaoVien gv : listGV) {
+            tableModel.addRow(new Object[]{
+                gv.getTen(),
+                gv.getTuoi(),
+                gv.getLop(),
+                gv.getGioitinh()
+            });
+
+        }
     }
 
     /**
