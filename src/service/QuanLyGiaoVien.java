@@ -24,10 +24,6 @@ public class QuanLyGiaoVien {
         list.add(new GiaoVien("XD", 25, "SD183122", "Nữ"));
         list.add(new GiaoVien("XD1", 25, "SD1831232", "Nữ"));
     }
-
-    public String LoadData(){
-        return list;
-    }
   
     public String xoa(int row){
         list.remove(row);
