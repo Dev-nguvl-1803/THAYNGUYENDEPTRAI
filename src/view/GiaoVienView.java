@@ -23,22 +23,43 @@ public class GiaoVienView extends javax.swing.JFrame {
 
     public GiaoVienView() {
         initComponents();
-        loadData(quanLyGiaoVien.getList());
+        load(qlgv.getList());
     }
 
-    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
-
-    void loadData(ArrayList<GiaoVien> list) {
+    void load(ArrayList<GiaoVien> listGV) {
         DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
         tableModel.setRowCount(0);
-        for (GiaoVien giaoVien : list) {
+        for (GiaoVien gv : listGV) {
             tableModel.addRow(new Object[]{
-                giaoVien.getTen(),
-                giaoVien.getTuoi(),
-                giaoVien.getLop(),
-                giaoVien.getGioitinh(),});
+                gv.getTen(),
+                gv.getTuoi(),
+                gv.getLop(),
+                gv.getGioitinh()
+            });
+
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {                                    
+        // TODO add your handling code here:
+        if (txtTen.getText().isEmpty() || txtTuoi.getText().isEmpty() || txtLop.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong De Trong");
         }
-    }
+        try {
+            String Ten = txtTen.getText();
+            String Tuoi = txtTuoi.getText();
+            String Lop = txtLop.getText();
+            String GT;
+            if (RBtnNam.isSelected()) {
+                GT = "Nam";
+            } else {
+                GT = "Nu";
+            }
+            GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
+            String KQ = quanLyGiaoVien.add(GV);
+            JOptionPane.showMessageDialog(this, KQ);
+            LoadSVTable(quanLyGiaoVien.getList());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
+        }
+    } 
     
 
     /**
