@@ -5,6 +5,7 @@
 package view;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.GiaoVien;
 import service.QuanLyGiaoVien;
@@ -22,7 +23,7 @@ public class GiaoVienView extends javax.swing.JFrame {
 
     public GiaoVienView() {
         initComponents();
-        loadData(quanLyGiaoVien.getList());
+        load(qlgv.getList());
     }
 
     QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
@@ -40,27 +41,27 @@ public class GiaoVienView extends javax.swing.JFrame {
     }
 
     QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
-
     public GiaoVienView() {
         initComponents();
         loadData(quanLyGiaoVien.getList());
     }
-
+    
     QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
-
-    void loadData(ArrayList<GiaoVien> list) {
+    
+    void loadData(ArrayList<GiaoVien> list){
         DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
         tableModel.setRowCount(0);
-        for (GiaoVien giaoVien : list) {
+        for (GiaoVien gv : listGV) {
             tableModel.addRow(new Object[]{
                 giaoVien.getTen(),
                 giaoVien.getTuoi(),
                 giaoVien.getLop(),
-                giaoVien.getGioitinh(),});
+                giaoVien.getGioitinh(),
+            });
         }
     }
 
-    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {                                    
         // TODO add your handling code here:
         if (txtTen.getText().isEmpty() || txtTuoi.getText().isEmpty() || txtLop.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Khong De Trong");
@@ -82,7 +83,8 @@ public class GiaoVienView extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
         }
-    }
+    } 
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,9 +108,9 @@ public class GiaoVienView extends javax.swing.JFrame {
         txtlop = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblgiaovien = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,11 +146,29 @@ public class GiaoVienView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblgiaovien);
 
-        jButton1.setText("Thêm");
+        btnThem.setText("Thêm");
+        btnThem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThemMouseClicked(evt);
+            }
+        });
 
-        jButton2.setText("Sửa");
+        btnSua.setText("Sửa");
+        btnSua.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSuaMouseClicked(evt);
+            }
+        });
 
-        jButton3.setText("Xóa");
+        btnXoa.setText("Xóa");
+        btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXoaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,7 +176,7 @@ public class GiaoVienView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3)
+                    .addComponent(btnXoa)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -181,8 +201,8 @@ public class GiaoVienView extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))))
+                            .addComponent(btnSua)
+                            .addComponent(btnThem))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -192,18 +212,18 @@ public class GiaoVienView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnThem))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addComponent(jButton3)
+                        .addComponent(btnXoa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txttuoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2))
+                            .addComponent(btnSua))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -221,6 +241,11 @@ public class GiaoVienView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jButton3MouseClicked
+
     private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiaovienMouseClicked
         // TODO add your handling code here:
         int row = tblgiaovien.getSelectedRow();
@@ -234,6 +259,63 @@ public class GiaoVienView extends javax.swing.JFrame {
             rdonu.setSelected(true);
         }
     }//GEN-LAST:event_tblgiaovienMouseClicked
+
+    private void btnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSuaMouseClicked
+        // TODO add your handling code here:
+        int row = tblgiaovien.getSelectedRow();
+        if (txtten.getText().isEmpty() || txttuoi.getText().isEmpty() || txtlop.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong De Trong");
+        }
+        try {
+            String Ten = txtten.getText();
+            Integer Tuoi = Integer.parseInt(txttuoi.getText());
+            String Lop = txtlop.getText();
+            String GT;
+            if (rdonam.isSelected()) {
+                GT = "Nam";
+            } else {
+                GT = "Nu";
+            }
+            GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
+            String KQ = qlgv.sua(row, GV);
+            JOptionPane.showMessageDialog(this, KQ);
+            load(qlgv.getList());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
+        }
+    }//GEN-LAST:event_btnSuaMouseClicked
+
+    private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
+        // TODO add your handling code here:
+        int row = tblgiaovien.getSelectedRow();
+        String kq = qlgv.xoa(row);
+        JOptionPane.showMessageDialog(this, kq);
+        load(qlgv.getList());
+    }//GEN-LAST:event_btnXoaMouseClicked
+
+    private void btnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemMouseClicked
+        // TODO add your handling code here:
+        if (txtten.getText().isEmpty() || txttuoi.getText().isEmpty() || txtlop.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong De Trong");
+        }
+        try {
+            String Ten = txtten.getText();
+            Integer Tuoi = Integer.parseInt(txttuoi.getText());
+            String Lop = txtlop.getText();
+            String GT;
+            if (rdonam.isSelected()) {
+                GT = "Nam";
+            } else {
+                GT = "Nu";
+            }
+            GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
+            String KQ = qlgv.them(GV);
+            JOptionPane.showMessageDialog(this, KQ);
+            load(qlgv.getList());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
+        }
+    }//GEN-LAST:event_btnThemMouseClicked
 
     /**
      * @param args the command line arguments
@@ -271,11 +353,11 @@ public class GiaoVienView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
