@@ -26,18 +26,41 @@ public class GiaoVienView extends javax.swing.JFrame {
         load(qlgv.getList());
     }
 
-    void load(ArrayList<GiaoVien> listGV) {
+    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
+
+    void loadData(ArrayList<GiaoVien> list) {
+        DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
+        tableModel.setRowCount(0);
+        for (GiaoVien giaoVien : list) {
+            tableModel.addRow(new Object[]{
+                giaoVien.getTen(),
+                giaoVien.getTuoi(),
+                giaoVien.getLop(),
+                giaoVien.getGioitinh(),});
+        }
+    }
+
+    QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
+    public GiaoVienView() {
+        initComponents();
+        loadData(quanLyGiaoVien.getList());
+    }
+    
+    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
+    
+    void loadData(ArrayList<GiaoVien> list){
         DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
         tableModel.setRowCount(0);
         for (GiaoVien gv : listGV) {
             tableModel.addRow(new Object[]{
-                gv.getTen(),
-                gv.getTuoi(),
-                gv.getLop(),
-                gv.getGioitinh()
+                giaoVien.getTen(),
+                giaoVien.getTuoi(),
+                giaoVien.getLop(),
+                giaoVien.getGioitinh(),
             });
         }
     }
+
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {                                    
         // TODO add your handling code here:
         if (txtTen.getText().isEmpty() || txtTuoi.getText().isEmpty() || txtLop.getText().isEmpty()) {
@@ -62,7 +85,6 @@ public class GiaoVienView extends javax.swing.JFrame {
         }
     } 
     
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -125,6 +147,11 @@ public class GiaoVienView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblgiaovien);
 
         btnThem.setText("Thêm");
+        btnThem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThemMouseClicked(evt);
+            }
+        });
 
         btnSua.setText("Sửa");
         btnSua.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,14 +159,19 @@ public class GiaoVienView extends javax.swing.JFrame {
                 btnSuaMouseClicked(evt);
             }
         });
+
         jButton3.setText("Xóa");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
             }
         });
+
         btnXoa.setText("Xóa");
         btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnXoaMouseClicked(evt);
             }
@@ -218,7 +250,7 @@ public class GiaoVienView extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiaovienMouseClicked
@@ -250,15 +282,60 @@ public class GiaoVienView extends javax.swing.JFrame {
 
     private void btnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSuaMouseClicked
         // TODO add your handling code here:
+        int row = tblgiaovien.getSelectedRow();
+        if (txtten.getText().isEmpty() || txttuoi.getText().isEmpty() || txtlop.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong De Trong");
+        }
+        try {
+            String Ten = txtten.getText();
+            Integer Tuoi = Integer.parseInt(txttuoi.getText());
+            String Lop = txtlop.getText();
+            String GT;
+            if (rdonam.isSelected()) {
+                GT = "Nam";
+            } else {
+                GT = "Nu";
+            }
+            GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
+            String KQ = qlgv.sua(row, GV);
+            JOptionPane.showMessageDialog(this, KQ);
+            load(qlgv.getList());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
+        }
     }//GEN-LAST:event_btnSuaMouseClicked
 
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
         // TODO add your handling code here:
         int row = tblgiaovien.getSelectedRow();
-        String kq = quanLyGiaoVien.xoa(row);
+        String kq = qlgv.xoa(row);
         JOptionPane.showMessageDialog(this, kq);
-        loadData(quanLyGiaoVien.getList());
+        load(qlgv.getList());
     }//GEN-LAST:event_btnXoaMouseClicked
+
+    private void btnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemMouseClicked
+        // TODO add your handling code here:
+        if (txtten.getText().isEmpty() || txttuoi.getText().isEmpty() || txtlop.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong De Trong");
+        }
+        try {
+            String Ten = txtten.getText();
+            Integer Tuoi = Integer.parseInt(txttuoi.getText());
+            String Lop = txtlop.getText();
+            String GT;
+            if (rdonam.isSelected()) {
+                GT = "Nam";
+            } else {
+                GT = "Nu";
+            }
+            GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
+            String KQ = qlgv.them(GV);
+            JOptionPane.showMessageDialog(this, KQ);
+            load(qlgv.getList());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
+        }
+    }//GEN-LAST:event_btnThemMouseClicked
 
     /**
      * @param args the command line arguments
