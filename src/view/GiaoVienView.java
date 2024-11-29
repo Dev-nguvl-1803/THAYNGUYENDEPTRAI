@@ -83,6 +83,11 @@ public class GiaoVienView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
         }
     } 
+
+    private void btnMoMouseClicked(java.awt.event.MouseEvent evt) {                                   
+        // TODO add your handling code here:
+        LoadData(quanLyGiaoVien.docFile());
+    }  
     
 
     /**
