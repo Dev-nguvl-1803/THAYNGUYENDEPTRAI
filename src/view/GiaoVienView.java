@@ -37,8 +37,30 @@ public class GiaoVienView extends javax.swing.JFrame {
                 gv.getGioitinh()
             });
 
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {                                    
+        // TODO add your handling code here:
+        if (txtTen.getText().isEmpty() || txtTuoi.getText().isEmpty() || txtLop.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong De Trong");
         }
-    }
+        try {
+            String Ten = txtTen.getText();
+            String Tuoi = txtTuoi.getText();
+            String Lop = txtLop.getText();
+            String GT;
+            if (RBtnNam.isSelected()) {
+                GT = "Nam";
+            } else {
+                GT = "Nu";
+            }
+            GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
+            String KQ = quanLyGiaoVien.add(GV);
+            JOptionPane.showMessageDialog(this, KQ);
+            LoadSVTable(quanLyGiaoVien.getList());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
+        }
+    } 
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,7 +130,10 @@ public class GiaoVienView extends javax.swing.JFrame {
                 btnSuaMouseClicked(evt);
             }
         });
-
+        jButton3.setText("Xóa");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
         btnXoa.setText("Xóa");
         btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -187,6 +212,22 @@ public class GiaoVienView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiaovienMouseClicked
+        // TODO add your handling code here:
+        int row = tblgiaovien.getSelectedRow();
+        GiaoVien giaoVien = quanLyGiaoVien.getList().get(row);
+        txtten.setText(giaoVien.getTen());
+        txttuoi.setText(String.valueOf(giaoVien.getTuoi()).toString());
+        txtlop.setText(giaoVien.getLop());
+        if(giaoVien.getGioitinh().equals("Nam")){
+            rdonam.setSelected(true);
+        }else{
+          
     private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiaovienMouseClicked
         // TODO add your handling code here:
         int row = tblgiaovien.getSelectedRow();
