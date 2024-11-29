@@ -68,6 +68,8 @@ public class Deptrai {
                             "这刹那过后世界只是回忆的沙漏\n" +
                             "流星坠落绚丽地点亮了整个星空\n" +
                             "像你故事在我生命留下不褪色的伤口");
+        System.out.println("Random XD");
+        System.out.println("Hát cho giờ ra chơi, mà trời mưa rơi những ngày em không thấy nắng");
     }
     
 }
