@@ -36,13 +36,13 @@ public class GiaoVienView extends javax.swing.JFrame {
                 gv.getLop(),
                 gv.getGioitinh()
             });
-
+        }
+    }
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {                                    
         // TODO add your handling code here:
         if (txtTen.getText().isEmpty() || txtTuoi.getText().isEmpty() || txtLop.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Khong De Trong");
         }
-    }
         try {
             String Ten = txtTen.getText();
             String Tuoi = txtTuoi.getText();
@@ -136,6 +136,8 @@ public class GiaoVienView extends javax.swing.JFrame {
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
+            }
+        });
         btnXoa.setText("Xóa");
         btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -229,7 +231,9 @@ public class GiaoVienView extends javax.swing.JFrame {
         if(giaoVien.getGioitinh().equals("Nam")){
             rdonam.setSelected(true);
         }else{
-          
+            rdonu.setSelected(true);
+        }
+    }   
     private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiaovienMouseClicked
         // TODO add your handling code here:
         int row = tblgiaovien.getSelectedRow();
