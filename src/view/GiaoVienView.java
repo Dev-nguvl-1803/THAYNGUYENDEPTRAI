@@ -37,30 +37,8 @@ public class GiaoVienView extends javax.swing.JFrame {
                 gv.getGioitinh()
             });
 
-    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {                                    
-        // TODO add your handling code here:
-        if (txtTen.getText().isEmpty() || txtTuoi.getText().isEmpty() || txtLop.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Khong De Trong");
         }
-        try {
-            String Ten = txtTen.getText();
-            String Tuoi = txtTuoi.getText();
-            String Lop = txtLop.getText();
-            String GT;
-            if (RBtnNam.isSelected()) {
-                GT = "Nam";
-            } else {
-                GT = "Nu";
-            }
-            GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
-            String KQ = quanLyGiaoVien.add(GV);
-            JOptionPane.showMessageDialog(this, KQ);
-            LoadSVTable(quanLyGiaoVien.getList());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
-        }
-    } 
-    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -226,7 +204,7 @@ public class GiaoVienView extends javax.swing.JFrame {
     private void btnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSuaMouseClicked
         // TODO add your handling code here:
         int row = tblgiaovien.getSelectedRow();
-         if (txtten.getText().isEmpty() || txttuoi.getText().isEmpty() || txtlop.getText().isEmpty()) {
+        if (txtten.getText().isEmpty() || txttuoi.getText().isEmpty() || txtlop.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Khong De Trong");
         }
         try {
@@ -240,9 +218,9 @@ public class GiaoVienView extends javax.swing.JFrame {
                 GT = "Nu";
             }
             GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
-            String KQ = quanLyGiaoVien.sua(row, GV);
+            String KQ = qlgv.sua(row, GV);
             JOptionPane.showMessageDialog(this, KQ);
-            loadData(quanLyGiaoVien.getList());
+            load(qlgv.getList());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
         }
@@ -251,9 +229,9 @@ public class GiaoVienView extends javax.swing.JFrame {
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
         // TODO add your handling code here:
         int row = tblgiaovien.getSelectedRow();
-        String kq = quanLyGiaoVien.xoa(row);
+        String kq = qlgv.xoa(row);
         JOptionPane.showMessageDialog(this, kq);
-        loadData(quanLyGiaoVien.getList());
+        load(qlgv.getList());
     }//GEN-LAST:event_btnXoaMouseClicked
 
     /**
