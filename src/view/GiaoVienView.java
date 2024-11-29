@@ -204,6 +204,27 @@ public class GiaoVienView extends javax.swing.JFrame {
 
     private void btnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSuaMouseClicked
         // TODO add your handling code here:
+        int row = tblgiaovien.getSelectedRow();
+         if (txtten.getText().isEmpty() || txttuoi.getText().isEmpty() || txtlop.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong De Trong");
+        }
+        try {
+            String Ten = txtten.getText();
+            Integer Tuoi = Integer.parseInt(txttuoi.getText());
+            String Lop = txtlop.getText();
+            String GT;
+            if (rdonam.isSelected()) {
+                GT = "Nam";
+            } else {
+                GT = "Nu";
+            }
+            GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
+            String KQ = quanLyGiaoVien.sua(row, GV);
+            JOptionPane.showMessageDialog(this, KQ);
+            loadData(quanLyGiaoVien.getList());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
+        }
     }//GEN-LAST:event_btnSuaMouseClicked
 
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
