@@ -25,6 +25,7 @@ public class Deptrai {
         System.out.println("Nah i'd win");
         System.out.println("update 2");
         System.out.println("Random XD");
+        System.out.println("Hát cho giờ ra chơi, mà trời mưa rơi những ngày em không thấy nắng");
     }
     
 }
