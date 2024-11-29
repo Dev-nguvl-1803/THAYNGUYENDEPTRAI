@@ -12,6 +12,7 @@ import model.GiaoVien;
  * @author ADMIN
  */
 public class QuanLyGiaoVien {
+
     ArrayList<GiaoVien> list = new ArrayList<>();
 
     public QuanLyGiaoVien() {
@@ -25,24 +26,21 @@ public class QuanLyGiaoVien {
         list.add(new GiaoVien("XD1", 25, "SD1831232", "Nữ"));
     }
 
-    public String LoadData(){
-        return list;
-    }
-  
-    public String xoa(int row){
+    public String xoa(int row) {
         list.remove(row);
         return "Xoa thanh it";
     }
+
     public String sua(int index, GiaoVien giaoVien) {
         list.set(index, giaoVien);
         return "Sua thanh cong";
     }
 
-    public String them(GiaoVien giaoVien){
+    public String them(GiaoVien giaoVien) {
         list.add(giaoVien);
         return "Them thanh cong";
     }
-  
+
     public ArrayList<GiaoVien> getList() {
         return list;
     }
@@ -50,7 +48,7 @@ public class QuanLyGiaoVien {
     public ArrayList<GiaoVien> search(ArrayList<GiaoVien> list, String ten) {
         ArrayList<GiaoVien> searchNow = new ArrayList();
         for (GiaoVien gv : list) {
-            if(gv.getTen().equals(ten)) {
+            if (gv.getTen().equals(ten)) {
                 searchNow.add(gv);
             }
         }

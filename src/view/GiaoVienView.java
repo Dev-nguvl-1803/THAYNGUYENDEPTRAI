@@ -40,14 +40,15 @@ public class GiaoVienView extends javax.swing.JFrame {
     }
 
     QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
+
     public GiaoVienView() {
         initComponents();
         loadData(quanLyGiaoVien.getList());
     }
-    
+
     QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
-    
-    void loadData(ArrayList<GiaoVien> list){
+
+    void loadData(ArrayList<GiaoVien> list) {
         DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
         tableModel.setRowCount(0);
         for (GiaoVien giaoVien : list) {
@@ -55,12 +56,11 @@ public class GiaoVienView extends javax.swing.JFrame {
                 giaoVien.getTen(),
                 giaoVien.getTuoi(),
                 giaoVien.getLop(),
-                giaoVien.getGioitinh(),
-            });
+                giaoVien.getGioitinh(),});
         }
     }
 
-    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {                                    
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
         if (txtTen.getText().isEmpty() || txtTuoi.getText().isEmpty() || txtLop.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Khong De Trong");
@@ -82,8 +82,7 @@ public class GiaoVienView extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
         }
-    } 
-    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
