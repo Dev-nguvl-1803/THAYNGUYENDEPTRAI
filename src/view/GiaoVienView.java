@@ -67,7 +67,7 @@ public class GiaoVienView extends javax.swing.JFrame {
         }
         try {
             String Ten = txtTen.getText();
-            String Tuoi = txtTuoi.getText();
+            Integer Tuoi = txtTuoi.getText().toString();
             String Lop = txtLop.getText();
             String GT;
             if (RBtnNam.isSelected()) {
