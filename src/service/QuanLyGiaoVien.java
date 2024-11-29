@@ -15,7 +15,7 @@ public class QuanLyGiaoVien {
     ArrayList<GiaoVien> list = new ArrayList<>();
 
     public QuanLyGiaoVien() {
-        list.add(new GiaoVien("Cao Phan Minh Hanh Tuk", 59, "SD1804", "Khong Biet"));
+        list.add(new GiaoVien("Cao Phan Minh Hanh Tuk", 59, "SD1804", "Nam"));
         list.add(new GiaoVien("Nguyen Tien Thanh", 35, "SD1803", "Nữ"));
         list.add(new GiaoVien("Nguyen Tuan Tai", 20, "SD1801", "Nam"));
         list.add(new GiaoVien("Tran Hai Nam", 25, "SD1842", "Osu"));
@@ -49,6 +49,11 @@ public class QuanLyGiaoVien {
 
     public String LoadData(){
         return list;
+        list.add(new GiaoVien("Tran Hai Nam", 25, "SD1842", "Nữ"));
+        list.add(new GiaoVien("Vu Thanh Hai Phong", 25, "SD1812", "Nữ"));
+        list.add(new GiaoVien("Tran Minh Quan", 25, "SD1832", "Nam"));
+        list.add(new GiaoVien("XD", 25, "SD183122", "Nữ"));
+        list.add(new GiaoVien("XD1", 25, "SD1831232", "Nữ"));
     }
   
     public String xoa(int row){
@@ -67,5 +72,15 @@ public class QuanLyGiaoVien {
   
     public ArrayList<GiaoVien> getList() {
         return list;
+    }
+
+    public ArrayList<GiaoVien> search(ArrayList<GiaoVien> list, String ten) {
+        ArrayList<GiaoVien> searchNow = new ArrayList();
+        for (GiaoVien gv : list) {
+            if(gv.getTen().equals(ten)) {
+                searchNow.add(gv);
+            }
+        }
+        return searchNow;
     }
 }
