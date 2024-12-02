@@ -25,6 +25,7 @@ public class Deptrai {
         System.out.println("Hello");
         System.out.println("Nah i'd win");
         System.out.println("update 2");
+
         System.out.println("拼图一片片失落\n" +
                             "像枫叶的冷漠\n" +
                             "墙上的钟默默数着寂寞\n" +
@@ -68,6 +69,9 @@ public class Deptrai {
                             "这刹那过后世界只是回忆的沙漏\n" +
                             "流星坠落绚丽地点亮了整个星空\n" +
                             "像你故事在我生命留下不褪色的伤口");
+
+        System.out.println("Random XD");
+        System.out.println("Hát cho giờ ra chơi, mà trời mưa rơi những ngày em không thấy nắng");
         System.out.println("Random XD");
         System.out.println("Hát cho giờ ra chơi, mà trời mưa rơi những ngày em không thấy nắng");
         System.out.println("Em thấy không có bạn, em đứt ngang dây đàn, em sẽ không ghi bàn hôm nay");
