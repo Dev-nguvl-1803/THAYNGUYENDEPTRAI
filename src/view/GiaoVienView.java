@@ -23,10 +23,8 @@ public class GiaoVienView extends javax.swing.JFrame {
 
     public GiaoVienView() {
         initComponents();
-        load(qlgv.getList());
+        loadData(qlgv.getList());
     }
-
-    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
 
     void loadData(ArrayList<GiaoVien> list) {
         DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
@@ -40,51 +38,7 @@ public class GiaoVienView extends javax.swing.JFrame {
         }
     }
 
-    QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
-    public GiaoVienView() {
-        initComponents();
-        loadData(quanLyGiaoVien.getList());
-    }
-    
-    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
-    
-    void loadData(ArrayList<GiaoVien> list){
-        DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
-        tableModel.setRowCount(0);
-        for (GiaoVien gv : listGV) {
-            tableModel.addRow(new Object[]{
-                giaoVien.getTen(),
-                giaoVien.getTuoi(),
-                giaoVien.getLop(),
-                giaoVien.getGioitinh(),
-            });
-        }
-    }
-
-    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {                                    
-        // TODO add your handling code here:
-        if (txtTen.getText().isEmpty() || txtTuoi.getText().isEmpty() || txtLop.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Khong De Trong");
-        }
-        try {
-            String Ten = txtTen.getText();
-            Integer Tuoi = txtTuoi.getText().toString();
-            String Lop = txtLop.getText();
-            String GT;
-            if (RBtnNam.isSelected()) {
-                GT = "Nam";
-            } else {
-                GT = "Nu";
-            }
-            GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
-            String KQ = quanLyGiaoVien.add(GV);
-            JOptionPane.showMessageDialog(this, KQ);
-            LoadSVTable(quanLyGiaoVien.getList());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
-        }
-    } 
-    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,6 +65,7 @@ public class GiaoVienView extends javax.swing.JFrame {
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
+        btnDoc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,20 +115,18 @@ public class GiaoVienView extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Xóa");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnXoa.setText("Xóa");
+        btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                btnXoaMouseClicked(evt);
             }
         });
 
-        btnXoa.setText("Xóa");
-        btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnDoc.setText("Doc");
+        btnDoc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnXoaMouseClicked(evt);
+                btnDocMouseClicked(evt);
             }
         });
 
@@ -206,41 +159,51 @@ public class GiaoVienView extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(61, 61, 61)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnSua)
-                            .addComponent(btnThem))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnSua)
+                                    .addComponent(btnThem)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDoc)))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnThem))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(btnXoa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnThem))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(btnXoa)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txttuoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnSua))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(txtlop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(rdonam)
+                            .addComponent(rdonu)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txttuoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSua))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtlop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(rdonam)
-                    .addComponent(rdonu))
-                .addGap(18, 18, 18)
+                        .addGap(146, 146, 146)
+                        .addComponent(btnDoc)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
@@ -248,24 +211,9 @@ public class GiaoVienView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here:
 
-    }//GEN-LAST:event_jButton3MouseClicked
 
-    private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiaovienMouseClicked
-        // TODO add your handling code here:
-        int row = tblgiaovien.getSelectedRow();
-        GiaoVien giaoVien = quanLyGiaoVien.getList().get(row);
-        txtten.setText(giaoVien.getTen());
-        txttuoi.setText(String.valueOf(giaoVien.getTuoi()).toString());
-        txtlop.setText(giaoVien.getLop());
-        if(giaoVien.getGioitinh().equals("Nam")){
-            rdonam.setSelected(true);
-        }else{
-            rdonu.setSelected(true);
-        }
-    }   
+  
     private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiaovienMouseClicked
         // TODO add your handling code here:
         int row = tblgiaovien.getSelectedRow();
@@ -299,7 +247,7 @@ public class GiaoVienView extends javax.swing.JFrame {
             GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
             String KQ = qlgv.sua(row, GV);
             JOptionPane.showMessageDialog(this, KQ);
-            load(qlgv.getList());
+            loadData(qlgv.getList());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
         }
@@ -308,9 +256,14 @@ public class GiaoVienView extends javax.swing.JFrame {
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
         // TODO add your handling code here:
         int row = tblgiaovien.getSelectedRow();
+        int confirm = JOptionPane.showConfirmDialog(this, "Do you want to delete this?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if(confirm == JOptionPane.YES_OPTION){
         String kq = qlgv.xoa(row);
         JOptionPane.showMessageDialog(this, kq);
-        load(qlgv.getList());
+        loadData(qlgv.getList());
+        }else if(confirm == JOptionPane.NO_OPTION){
+            JOptionPane.showMessageDialog(this, "Failed to delete: Canceled");
+        }
     }//GEN-LAST:event_btnXoaMouseClicked
 
     private void btnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemMouseClicked
@@ -331,11 +284,16 @@ public class GiaoVienView extends javax.swing.JFrame {
             GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
             String KQ = qlgv.them(GV);
             JOptionPane.showMessageDialog(this, KQ);
-            load(qlgv.getList());
+            loadData(qlgv.getList());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
         }
     }//GEN-LAST:event_btnThemMouseClicked
+
+    private void btnDocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDocMouseClicked
+        // TODO add your handling code here:
+        loadData(qlgv.docFile());
+    }//GEN-LAST:event_btnDocMouseClicked
 
     /**
      * @param args the command line arguments
@@ -373,6 +331,7 @@ public class GiaoVienView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDoc;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;

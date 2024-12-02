@@ -4,6 +4,8 @@
  */
 package service;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import model.GiaoVien;
 import java.io.*;;
@@ -37,7 +39,7 @@ public class QuanLyGiaoVien {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split(",\\s*");
                 String ten = parts[0];
-                Integer tuoi = Integer.parts[1];
+                Integer tuoi = Integer.parseInt(parts[1]);
                 String lop = parts[2];
                 String gioitinh = parts[3];
                 GiaoVien GV = new GiaoVien(ten, tuoi, lop, gioitinh);
@@ -47,17 +49,6 @@ public class QuanLyGiaoVien {
             System.out.println("Có lỗi xảy ra: " + e.getMessage());
         }
         return GVList;
-    }
-
-    public ArrayList<GiaoVien> LoadData2(){
-        list.add(new GiaoVien("Tran Hai Nam", 25, "SD1842", "Nữ"));
-        list.add(new GiaoVien("Vu Thanh Hai Phong", 25, "SD1812", "Nữ"));
-        list.add(new GiaoVien("Tran Minh Quan", 25, "SD1832", "Nam"));
-        list.add(new GiaoVien("XD", 25, "SD183122", "Nữ"));
-        list.add(new GiaoVien("XD1", 25, "SD1831232", "Nữ"));
-
-    public ArrayList LoadData(){
-        return list;
     }
   
     public String xoa(int row){
