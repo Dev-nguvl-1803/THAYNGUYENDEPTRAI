@@ -4,6 +4,8 @@
  */
 package service;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import model.GiaoVien;
 
@@ -26,8 +28,26 @@ public class QuanLyGiaoVien {
         list.add(new GiaoVien("XD1", 25, "SD1831232", "Ngu1321"));
     }
 
-    public ArrayList LoadData(){
-        return list;
+    public ArrayList<GiaoVien> docFile() {
+        String path = "output.txt";
+        ArrayList<GiaoVien> GVList = new ArrayList<>();
+        try {
+            FileReader fileReader = new FileReader(path);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] parts = line.split(",\\s*");
+                String ten = parts[0];
+                Integer tuoi = Integer.parseInt(parts[1]);
+                String lop = parts[2];
+                String gioitinh = parts[3];
+                GiaoVien GV = new GiaoVien(ten, tuoi, lop, gioitinh);
+                GVList.add(GV);
+            }
+        } catch (Exception e) {
+            System.out.println("Có lỗi xảy ra: " + e.getMessage());
+        }
+        return GVList;
     }
   
     public String xoa(int row){
