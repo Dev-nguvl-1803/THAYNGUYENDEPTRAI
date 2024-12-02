@@ -70,6 +70,7 @@ public class Deptrai {
                             "像你故事在我生命留下不褪色的伤口");
         System.out.println("Random XD");
         System.out.println("Hát cho giờ ra chơi, mà trời mưa rơi những ngày em không thấy nắng");
+        System.out.println("Em thấy không có bạn, em đứt ngang dây đàn, em sẽ không ghi bàn hôm nay");
     }
     
 }
