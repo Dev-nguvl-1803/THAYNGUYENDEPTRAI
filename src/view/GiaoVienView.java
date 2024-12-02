@@ -256,9 +256,14 @@ public class GiaoVienView extends javax.swing.JFrame {
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
         // TODO add your handling code here:
         int row = tblgiaovien.getSelectedRow();
+        int confirm = JOptionPane.showConfirmDialog(this, "Do you want to delete this?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if(confirm == JOptionPane.YES_OPTION){
         String kq = qlgv.xoa(row);
         JOptionPane.showMessageDialog(this, kq);
         loadData(qlgv.getList());
+        }else if(confirm == JOptionPane.NO_OPTION){
+            JOptionPane.showMessageDialog(this, "Failed to delete: Canceled");
+        }
     }//GEN-LAST:event_btnXoaMouseClicked
 
     private void btnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemMouseClicked
