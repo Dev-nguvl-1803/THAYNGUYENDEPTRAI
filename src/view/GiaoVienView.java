@@ -26,18 +26,65 @@ public class GiaoVienView extends javax.swing.JFrame {
         load(qlgv.getList());
     }
 
-    void load(ArrayList<GiaoVien> listGV) {
+    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
+
+    void loadData(ArrayList<GiaoVien> list) {
+        DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
+        tableModel.setRowCount(0);
+        for (GiaoVien giaoVien : list) {
+            tableModel.addRow(new Object[]{
+                giaoVien.getTen(),
+                giaoVien.getTuoi(),
+                giaoVien.getLop(),
+                giaoVien.getGioitinh(),});
+        }
+    }
+
+    QuanLyGiaoVien qlgv = new QuanLyGiaoVien();
+    public GiaoVienView() {
+        initComponents();
+        loadData(quanLyGiaoVien.getList());
+    }
+    
+    QuanLyGiaoVien quanLyGiaoVien = new QuanLyGiaoVien();
+    
+    void loadData(ArrayList<GiaoVien> list){
         DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
         tableModel.setRowCount(0);
         for (GiaoVien gv : listGV) {
             tableModel.addRow(new Object[]{
-                gv.getTen(),
-                gv.getTuoi(),
-                gv.getLop(),
-                gv.getGioitinh()
+                giaoVien.getTen(),
+                giaoVien.getTuoi(),
+                giaoVien.getLop(),
+                giaoVien.getGioitinh(),
             });
         }
     }
+
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {                                    
+        // TODO add your handling code here:
+        if (txtTen.getText().isEmpty() || txtTuoi.getText().isEmpty() || txtLop.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong De Trong");
+        }
+        try {
+            String Ten = txtTen.getText();
+            String Tuoi = txtTuoi.getText();
+            String Lop = txtLop.getText();
+            String GT;
+            if (RBtnNam.isSelected()) {
+                GT = "Nam";
+            } else {
+                GT = "Nu";
+            }
+            GiaoVien GV = new GiaoVien(Ten, Tuoi, Lop, GT);
+            String KQ = quanLyGiaoVien.add(GV);
+            JOptionPane.showMessageDialog(this, KQ);
+            LoadSVTable(quanLyGiaoVien.getList());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Phai La Mot So Nguyen");
+        }
+    } 
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,6 +158,13 @@ public class GiaoVienView extends javax.swing.JFrame {
         btnSua.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSuaMouseClicked(evt);
+            }
+        });
+
+        jButton3.setText("Xóa");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
             }
         });
 
@@ -217,6 +271,19 @@ public class GiaoVienView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiaovienMouseClicked
+        // TODO add your handling code here:
+        int row = tblgiaovien.getSelectedRow();
+        GiaoVien giaoVien = quanLyGiaoVien.getList().get(row);
+        txtten.setText(giaoVien.getTen());
+        txttuoi.setText(String.valueOf(giaoVien.getTuoi()).toString());
+        txtlop.setText(giaoVien.getLop());
+        if(giaoVien.getGioitinh().equals("Nam")){
+            rdonam.setSelected(true);
+        }else{
+            rdonu.setSelected(true);
+        }
+    }   
     private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiaovienMouseClicked
         // TODO add your handling code here:
         int row = tblgiaovien.getSelectedRow();
