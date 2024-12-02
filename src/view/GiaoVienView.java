@@ -224,7 +224,7 @@ public class GiaoVienView extends javax.swing.JFrame {
     private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {                                         
         // TODO add your handling code here:
         int row = tblgiaovien.getSelectedRow();
-        GiaoVien giaoVien = quanLyGiaoVien.getList().get(row);
+        GiaoVien giaoVien = qlgv.getList().get(row);
         txtten.setText(giaoVien.getTen());
         txttuoi.setText(String.valueOf(giaoVien.getTuoi()).toString());
         txtlop.setText(giaoVien.getLop());
@@ -234,19 +234,6 @@ public class GiaoVienView extends javax.swing.JFrame {
             rdonu.setSelected(true);
         }
     }   
-    private void tblgiaovienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiaovienMouseClicked
-        // TODO add your handling code here:
-        int row = tblgiaovien.getSelectedRow();
-        GiaoVien gv = qlgv.getList().get(row);
-        txtten.setText(gv.getTen());
-        txttuoi.setText(gv.getTuoi().toString());
-        txtlop.setText(gv.getLop());
-        if ("Nam".equals(gv.getGioitinh())) {
-            rdonam.setSelected(true);
-        } else {
-            rdonu.setSelected(true);
-        }
-    }//GEN-LAST:event_tblgiaovienMouseClicked
 
     private void btnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSuaMouseClicked
         // TODO add your handling code here:
