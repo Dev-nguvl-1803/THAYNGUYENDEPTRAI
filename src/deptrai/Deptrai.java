@@ -72,7 +72,8 @@ public class Deptrai {
 
         System.out.println("Random XD");
         System.out.println("Hát cho giờ ra chơi, mà trời mưa rơi những ngày em không thấy nắng");
-
+        System.out.println("Random XD");
+        System.out.println("Hát cho giờ ra chơi, mà trời mưa rơi những ngày em không thấy nắng");
     }
     
 }
