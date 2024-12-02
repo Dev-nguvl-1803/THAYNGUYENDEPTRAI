@@ -13,6 +13,7 @@ import java.io.*;;
  * @author ADMIN
  */
 public class QuanLyGiaoVien {
+
     ArrayList<GiaoVien> list = new ArrayList<>();
 
     public QuanLyGiaoVien() {
@@ -48,12 +49,14 @@ public class QuanLyGiaoVien {
         return GVList;
     }
 
-    public ArrayList<GiaoVien> LoadData(){
+    public ArrayList<GiaoVien> LoadData2(){
         list.add(new GiaoVien("Tran Hai Nam", 25, "SD1842", "Nữ"));
         list.add(new GiaoVien("Vu Thanh Hai Phong", 25, "SD1812", "Nữ"));
         list.add(new GiaoVien("Tran Minh Quan", 25, "SD1832", "Nam"));
         list.add(new GiaoVien("XD", 25, "SD183122", "Nữ"));
         list.add(new GiaoVien("XD1", 25, "SD1831232", "Nữ"));
+
+    public ArrayList LoadData(){
         return list;
     }
   
@@ -61,16 +64,17 @@ public class QuanLyGiaoVien {
         list.remove(row);
         return "Xoa thanh it";
     }
+
     public String sua(int index, GiaoVien giaoVien) {
         list.set(index, giaoVien);
         return "Sua thanh cong";
     }
 
-    public String them(GiaoVien giaoVien){
+    public String them(GiaoVien giaoVien) {
         list.add(giaoVien);
         return "Them thanh cong";
     }
-  
+
     public ArrayList<GiaoVien> getList() {
         return list;
     }
