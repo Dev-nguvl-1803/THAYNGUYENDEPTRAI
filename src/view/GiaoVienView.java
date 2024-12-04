@@ -29,6 +29,7 @@ public class GiaoVienView extends javax.swing.JFrame {
     void loadData(ArrayList<GiaoVien> list) {
         DefaultTableModel tableModel = (DefaultTableModel) tblgiaovien.getModel();
         tableModel.setRowCount(0);
+        System.out.println("PLS PAYPLOAD");
         for (GiaoVien giaoVien : list) {
             tableModel.addRow(new Object[]{
                 giaoVien.getTen(),
