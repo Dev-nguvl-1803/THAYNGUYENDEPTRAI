@@ -73,6 +73,8 @@ public class Deptrai {
         System.out.println("Random XD");
         System.out.println("Hát cho giờ ra chơi, mà trời mưa rơi những ngày em không thấy nắng");
         System.out.println("if you sad just go XD, it's better than anytype of tea");
+        System.out.println("if you sad just go XD, it's better than anytype of tea");
+        System.out.println("if you sad just go XD, it's better than anytype of tea");
         System.out.println("Em thấy không có bạn, em đứt ngang dây đàn, em sẽ không ghi bàn hôm nay");
         System.out.println("Cho tới hôm anh về, giữ lấy cánh thư để trong tay");
     }
