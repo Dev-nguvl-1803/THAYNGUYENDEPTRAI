@@ -25,7 +25,7 @@ public class Deptrai {
         System.out.println("Hello");
         System.out.println("Nah i'd win");
         System.out.println("update 2");
-
+        System.out.println("Sang som thuc day, thay nguyen qua deptrai");
         System.out.println("拼图一片片失落\n" +
                             "像枫叶的冷漠\n" +
                             "墙上的钟默默数着寂寞\n" +

@@ -31,11 +31,11 @@ public class GiaoVienView extends javax.swing.JFrame {
         tableModel.setRowCount(0);
         System.out.println("PLS PAYPLOAD");
         for (GiaoVien giaoVien : list) {
-            tableModel.addRow(new Object[] {
-                    giaoVien.getTen(),
-                    giaoVien.getTuoi(),
-                    giaoVien.getLop(),
-                    giaoVien.getGioitinh(), });
+            tableModel.addRow(new Object[]{
+                giaoVien.getTen(),
+                giaoVien.getTuoi(),
+                giaoVien.getLop(),
+                giaoVien.getGioitinh(),});
         }
     }
 
@@ -85,14 +85,14 @@ public class GiaoVienView extends javax.swing.JFrame {
         rdonu.setText("Nữ");
 
         tblgiaovien.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null, null, null, null },
-                        { null, null, null, null },
-                        { null, null, null, null },
-                        { null, null, null, null }
+                new Object[][]{
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null}
                 },
-                new String[] {
-                        "Ten", "Tuoi", "Lop", "Gioi tinh"
+                new String[]{
+                    "Ten", "Tuoi", "Lop", "Gioi tinh"
                 }));
         tblgiaovien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
