@@ -4,6 +4,9 @@
  */
 package deptrai;
 
+import java.util.ArrayList;
+import model.GiaoVien;
+
 /**
  *
  * @author ADMIN
@@ -14,7 +17,7 @@ public class Deptrai {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         System.out.println("Nah i'd win");
         System.out.println("Để đây để còn ghi nhớ: khai báo thuộc tính");
         System.out.println("Có bốn thuộc tính đó là: Mã, tên, tuổi và địa chỉ");
@@ -25,7 +28,7 @@ public class Deptrai {
         System.out.println("Hello");
         System.out.println("Nah i'd win");
         System.out.println("update 2");
-
+        System.out.println("Sang som thuc day, thay nguyen qua deptrai");
         System.out.println("拼图一片片失落\n" +
                             "像枫叶的冷漠\n" +
                             "墙上的钟默默数着寂寞\n" +
@@ -72,11 +75,17 @@ public class Deptrai {
 
         System.out.println("Random XD");
         System.out.println("Hát cho giờ ra chơi, mà trời mưa rơi những ngày em không thấy nắng");
-        System.out.println("Random XD");
-        System.out.println("Hát cho giờ ra chơi, mà trời mưa rơi những ngày em không thấy nắng");
+        System.out.println("if you sad just go XD, it's better than anytype of tea");
+        System.out.println("if you sad just go XD, it's better than anytype of tea");
+        System.out.println("if you sad just go XD, it's better than anytype of tea");
         System.out.println("Em thấy không có bạn, em đứt ngang dây đàn, em sẽ không ghi bàn hôm nay");
         System.out.println("Random XD 1");
+        System.out.println("Cho tới hôm anh về, giữ lấy cánh thư để trong tay");
     }
-    
-}
+    ArrayList<GiaoVien> list = new ArrayList<>();
 
+    public Deptrai() {
+        list.add(new GiaoVien("Test", 18, "Null", "N/A"));
+    }
+
+}
