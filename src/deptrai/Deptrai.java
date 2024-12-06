@@ -4,6 +4,9 @@
  */
 package deptrai;
 
+import java.util.ArrayList;
+import model.GiaoVien;
+
 /**
  *
  * @author ADMIN
@@ -14,7 +17,7 @@ public class Deptrai {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         System.out.println("Nah i'd win");
         System.out.println("Để đây để còn ghi nhớ: khai báo thuộc tính");
         System.out.println("Có bốn thuộc tính đó là: Mã, tên, tuổi và địa chỉ");
@@ -78,6 +81,10 @@ public class Deptrai {
         System.out.println("Em thấy không có bạn, em đứt ngang dây đàn, em sẽ không ghi bàn hôm nay");
         System.out.println("Cho tới hôm anh về, giữ lấy cánh thư để trong tay");
     }
-    
-}
+    ArrayList<GiaoVien> list = new ArrayList<>();
 
+    public Deptrai() {
+        list.add(new GiaoVien("Test", 18, "Null", "N/A"));
+    }
+
+}
