@@ -26,6 +26,7 @@ public class Deptrai {
         System.out.println("Nah i'd win");
         System.out.println("update 2");
         System.out.println("cay ban phim la 1 toi ac");
+        System.out.println("Nam femboy");
         System.out.println("拼图一片片失落\n" +
                             "像枫叶的冷漠\n" +
                             "墙上的钟默默数着寂寞\n" +
