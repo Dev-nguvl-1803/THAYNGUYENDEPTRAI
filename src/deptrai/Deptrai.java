@@ -79,11 +79,14 @@ public class Deptrai {
         System.out.println("if you sad just go XD, it's better than anytype of tea");
         System.out.println("if you sad just go XD, it's better than anytype of tea");
         System.out.println("Em thấy không có bạn, em đứt ngang dây đàn, em sẽ không ghi bàn hôm nay");
+        System.out.println("CUỘC ĐỜI NÀY, TÔI XIN CẢM ƠN BẠN");
+        System.out.println("DIZZZZZ MẸ CUỘC ĐỜI YESSSSSSSSSSSSIRRRRRRRRRR");
     }
     ArrayList<GiaoVien> list = new ArrayList<>();
 
     public Deptrai() {
         list.add(new GiaoVien("Test", 18, "Null", "N/A"));
     }
-
+    
+    
 }
