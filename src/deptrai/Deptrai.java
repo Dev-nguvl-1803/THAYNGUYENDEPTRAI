@@ -84,6 +84,7 @@ public class Deptrai {
         System.out.println("Random XD 1");
         System.out.println("Cho tới hôm anh về, giữ lấy cánh thư để trong tay");
         System.out.println("Bởi vì sẽ có ngày em thấy");
+        System.out.println("Những chuyện buồn hôm nay");
     }
     ArrayList<GiaoVien> list = new ArrayList<>();
 
